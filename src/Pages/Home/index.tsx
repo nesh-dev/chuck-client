@@ -4,9 +4,14 @@ import Quotes from "../../components/quotes";
 import { CATEGORIES } from "../../components/categories/query";
 import { useQuery } from "@apollo/client";
 import styled from "styled-components";
+import NavbarComponent from "../../components/NavBar";
 
-const Homecontainer = styled.div`
+
+const HomeContainer = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const QuotesWrapper = styled.div`
@@ -14,13 +19,10 @@ const QuotesWrapper = styled.div`
 `; 
 
 const CategoryWrapper = styled.div`
-
   flex: 1; 
   justify-content: center;
 
 `; 
-
-
 
 const Home = () => {
   const { loading, error, data } = useQuery(CATEGORIES);
@@ -37,7 +39,8 @@ const Home = () => {
   } else {
     return (
       <>
-        <Homecontainer>
+        <NavbarComponent/>
+        <HomeContainer>
           <CategoryWrapper>
             <h2> Select a category </h2>
             {!!data.categories &&
@@ -58,7 +61,7 @@ const Home = () => {
           <QuotesWrapper>
             <Quotes category={category} />
           </QuotesWrapper>
-        </Homecontainer>
+        </HomeContainer>
       </>
     );
   }

@@ -9,12 +9,12 @@ interface Props {
 
 const Quote: React.FC<Props> = ({ data }) => {
   if (!data.joke) {
-    return <div>No launch available</div>;
+    return <div>No joke available</div>;
   }
 
   return (
     <div>
-        <h1>{data.joke.value}</h1>
+        <h1>"{data.joke.value}"</h1>
     </div>
   );
 };

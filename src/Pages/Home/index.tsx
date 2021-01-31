@@ -1,30 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Categories from "../../components/categories/Categories";
 import Quotes from "../../components/quotes";
-import { CATEGORIES } from "../../components/categories/query";
-import { useQuery } from "@apollo/client";
 import styled from "styled-components";
-
-const Homecontainer = styled.div`
-  display: flex;
-`;
-
-const QuotesWrapper = styled.div`
-  flex: 1;
-`; 
-
-const CategoryWrapper = styled.div`
-
-  flex: 1; 
-  justify-content: center;
-
-`; 
+import NavbarComponent from "../../components/NavBar";
+import { CategoriesContext } from "../../state-management/CategoriesContext";
 
 
 
 const Home = () => {
-  const { loading, error, data } = useQuery(CATEGORIES);
   const [category, setCategory] = useState("food");
+  const { data, loading } = useContext(CategoriesContext)
 
   const onsetCategory = (index: number) => {
     setCategory(data.categories[index]);
@@ -32,12 +17,11 @@ const Home = () => {
 
   if (loading) {
     return <div>Loading...</div>;
-  } else if (error || !data) {
-    return <div>ERROR</div>;
   } else {
     return (
       <>
-        <Homecontainer>
+        <NavbarComponent />
+        <HomeContainer>
           <CategoryWrapper>
             <h2> Select a category </h2>
             {!!data.categories &&
@@ -46,7 +30,6 @@ const Home = () => {
                   !!category && (
                     <Categories
                       category={category}
-                      data={data}
                       onSelect={onsetCategory}
                       index={i}
                       key={i}
@@ -54,14 +37,29 @@ const Home = () => {
                   )
               )}
           </CategoryWrapper>
-
           <QuotesWrapper>
             <Quotes category={category} />
           </QuotesWrapper>
-        </Homecontainer>
+        </HomeContainer>
       </>
     );
   }
 };
+
+const HomeContainer = styled.div`
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const QuotesWrapper = styled.div`
+  flex: 1;
+`;
+
+const CategoryWrapper = styled.div`
+  flex: 1;
+  justify-content: center;
+`;
 
 export default Home;

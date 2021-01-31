@@ -12,27 +12,12 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
-};
-
-
-export type Joke = {
-  __typename?: 'Joke';
-  categories?: Maybe<Array<Maybe<Scalars['String']>>>;
-  icon_url: Scalars['String'];
-  id: Scalars['String'];
-  value: Scalars['String'];
-  url: Scalars['String'];
-  updated_at: Scalars['String'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  /** Test Message.  */
-  testMessage: Scalars['String'];
-  categories?: Maybe<Array<Maybe<Scalars['String']>>>;
-  joke?: Maybe<Joke>;
+  categories: Array<Scalars['String']>;
+  joke: C;
 };
 
 
@@ -40,11 +25,16 @@ export type QueryJokeArgs = {
   category: Scalars['String'];
 };
 
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-}
-
+export type C = {
+  __typename?: 'c';
+  created_at: Scalars['String'];
+  categories: Array<Scalars['String']>;
+  icon_url: Scalars['String'];
+  id: Scalars['String'];
+  updated_at: Scalars['String'];
+  url: Scalars['String'];
+  value: Scalars['String'];
+};
 
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -61,10 +51,10 @@ export type JokeQueryVariables = Exact<{
 
 export type JokeQuery = (
   { __typename?: 'Query' }
-  & { joke?: Maybe<(
-    { __typename?: 'Joke' }
-    & Pick<Joke, 'categories' | 'icon_url' | 'id' | 'value' | 'url' | 'updated_at'>
-  )> }
+  & { joke: (
+    { __typename?: 'c' }
+    & Pick<C, 'categories' | 'icon_url' | 'id' | 'value' | 'url' | 'updated_at'>
+  ) }
 );
 
 

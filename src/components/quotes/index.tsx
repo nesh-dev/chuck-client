@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useJokeQuery } from '../../generated/graphql';
 import Quote from './Quote';
-import styled from 'styled-components';
 
 interface Props {
   category: string;

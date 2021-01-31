@@ -26,7 +26,7 @@ const Home = () => {
             <h2> Select a category </h2>
             {!!data.categories &&
               data.categories.map(
-                (category: any, i: any) =>
+                (category: string, i: number) =>
                   !!category && (
                     <Categories
                       category={category}
@@ -55,11 +55,14 @@ const HomeContainer = styled.div`
 
 const QuotesWrapper = styled.div`
   flex: 1;
+  justify-content: center;
+  margin-right: 5%;
 `;
 
 const CategoryWrapper = styled.div`
   flex: 1;
   justify-content: center;
+  margin-left: 5%;
 `;
 
 export default Home;

@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Installation and Setup 
-Clone the repo 
+Clone the repo
 
 `git clone https://github.com/nesh-dev/chuck-client.git`
 
@@ -11,11 +11,11 @@ Switch the main branch
 
 `git fetch origin main`
 
-Navigate to the folder 
+Navigate to the folder
 
 `cd chuck-client`
 
-Install the required packages 
+Install the required packages
 
 `yarn install`
 

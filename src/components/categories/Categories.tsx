@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 interface Props {
   category: string;
-  data: string;
   key: number;
   onSelect: Function;
   index: number;
@@ -24,7 +23,6 @@ const Button = styled.button`
 
 
 const CategoryButton: React.FC<Props> = ({
-  data,
   category,
   index,
   onSelect,

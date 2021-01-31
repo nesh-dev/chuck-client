@@ -1,13 +1,14 @@
 import React from 'react';
+import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import Home from './Pages/Home'
-import './App.css'
+import CategoriesContextProvider from './state-management/Provider'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Home />
-    </div>
+      <CategoriesContextProvider>
+        <Home />
+      </CategoriesContextProvider>
   );
-}
+};
 
-export default App;
+export default App

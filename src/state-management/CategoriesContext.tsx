@@ -1,17 +1,20 @@
 
+import { ApolloError } from "@apollo/client";
 import { createContext } from "react";
 
-interface Category {
+export interface Category {
     categories: string[]
 }
 
-interface InitialStateType {
+export interface InitialStateType {
     data: Category
-    loading: boolean
+    loading: boolean, 
+    error?: ApolloError,
 }
-const initialState: InitialStateType = {
+export const initialState: InitialStateType = {
     data: {categories:[]},
-    loading: false, 
+    loading: true, 
+    error: undefined,
 }
 
 export const CategoriesContext = createContext(initialState);

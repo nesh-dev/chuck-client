@@ -8,7 +8,7 @@ const Navbar = styled.nav`
     border-bottom: 1px solid palevioletred;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 `; 
 
 const SignInButton = styled.button`
@@ -35,7 +35,6 @@ export default function NavbarComponent() {
         <Logo>Chucky</Logo>
         </div>
         <div>
-        <a href="#SignIn"><SignInButton>SignIn</SignInButton></a>
         </div>
         
         </Navbar>

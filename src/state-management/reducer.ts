@@ -1,18 +1,34 @@
 
-import InitialStateType from './Provider'
+import {Category, initialState} from "./CategoriesContext";
 
-type CategoriesAction = {
-    type: string
-    category: string
+type Id =  {
+    id: string
 }
 
-export default function reducer(state: any, action: any) {
-    console.log(action, 'KKKK')
+type Action = 
+|  {
+    type: 'CATEGORIES'
+    data?: Category
+    }
+| {
+    type: 'CHECKED'
+    payload: Id
+  }
+
+
+export default function reducer(state=initialState,  action: Action) {
     switch(action.type) {
         case "CATEGORIES":
             return {
+                ...state,
+                loading: false,
                 categories:[ action.data ]
             };
+        case "CHECKED":
+            return {
+                ...state,
+                categories: [state.data.categories.filter(id => id === action.payload.id)]
+            }
         default:
             return state
     }
